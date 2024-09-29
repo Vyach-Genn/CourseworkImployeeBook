@@ -2,27 +2,27 @@ import java.util.Objects;
 
 public class Employee {
     // Лоля класса
-    private String name;
+    private String fullName;
     private int department;
-    private int salary;
+    private int monthSalary;
     // Статическая переменная-счетчик для id
-    private static int index = 1;
+    private static int nextId = 1;
     // Поле id для каждого объекта класса
     private int id;
 
-    public Employee(String name, int department, int salary) {
-        this.name = name;
+    public Employee(String name, int department, int monthSalary) {
+        this.fullName = name;
         this.department = department;
-        this.salary = salary;
-        this.id = index++;
+        this.monthSalary = monthSalary;
+        this.id = nextId++;
     }
 
     public String getName() {
-        return name;
+        return fullName;
     }
 
-    public int getSalary() {
-        return salary;
+    public int getMonthSalary() {
+        return monthSalary;
     }
 
     public int getDepartment() {
@@ -37,8 +37,8 @@ public class Employee {
         this.department = department;
     }
 
-    public void setSalary(int salary) {
-        this.salary = salary;
+    public void setMonthSalary(int monthSalary) {
+        this.monthSalary = monthSalary;
     }
 
     @Override
@@ -46,16 +46,16 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return department == employee.department && salary == employee.salary && id == employee.id && Objects.equals(name, employee.name);
+        return department == employee.department && monthSalary == employee.monthSalary && id == employee.id && Objects.equals(fullName, employee.fullName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, department, salary, id);
+        return Objects.hash(fullName, department, monthSalary, id);
     }
 
     @Override
     public String toString() {
-        return String.format("%d,  %s,  department=%d,  salary=%d", id, name, department, salary);
+        return String.format("ID: %d, Name: %s,  salary: %d", id, fullName, monthSalary);
     }
 }

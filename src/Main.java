@@ -42,9 +42,9 @@ public class Main {
 
     private static int findMinSalary(Employee[] employees) {
         int min = employees[0].getSalary();
-        for (int i = 0; i < employees.length; i++) {
-            if (min > employees[i].getSalary()) {
-                min = employees[i].getSalary();
+        for (Employee employee : employees) {
+            if (min > employee.getSalary()) {
+                min = employee.getSalary();
             }
         }
         return min;
@@ -52,9 +52,9 @@ public class Main {
 
     private static int findMaxSalary(Employee[] employees) {
         int max = employees[0].getSalary();
-        for (int i = 0; i < employees.length; i++) {
-            if (max < employees[i].getSalary()) {
-                max = employees[i].getSalary();
+        for (Employee employee : employees) {
+            if (max < employee.getSalary()) {
+                max = employee.getSalary();
             }
         }
         return max;
@@ -66,8 +66,8 @@ public class Main {
     }
 
     public static void printName(Employee[] employees) {
-        for (int i = 0; i < employees.length; i++) {
-            System.out.println("Name: " + employees[i].getName());
+        for (Employee employee : employees) {
+            System.out.println("Name: " + employee.getName());
         }
     }
 }

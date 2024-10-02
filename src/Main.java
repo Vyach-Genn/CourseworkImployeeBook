@@ -33,7 +33,7 @@ public class Main {
 //        System.out.println("№ департамента " + departamentIndex + ". Сумма затрат на отдел: " + totalDepartmentSalary);
 //        System.out.println();
 //        // Среднюю зп по отделу
-        int averageDepartmentSalary = calculateAverageSalaryDepartment(employeesArr, departamentNumber);
+        float averageDepartmentSalary = calculateAverageSalaryDepartment(employeesArr, departamentNumber);
 //        System.out.println("№ департамента " + departamentIndex + ". Средняя сумма затрат на отдел: " + averageDepartmentSalary);
 //        System.out.println();
         // Проиндексировать зарплату всех сотрудников отдела на процент, который приходит в качестве параметра;
@@ -92,7 +92,7 @@ public class Main {
     }
 
     //  d) Средняя зп по отделу;
-    private static int calculateAverageSalaryDepartment(Employee[] employeesArr, int number) {
+    private static float calculateAverageSalaryDepartment(Employee[] employeesArr, int number) {
         int sumSalary = 0;
         int count = 0;
         for (Employee employee : employeesArr) {
@@ -101,7 +101,7 @@ public class Main {
                 count++;
             }
         }
-        return count > 0 ? sumSalary / count : 0;
+        return count > 0 ? (float) sumSalary / count : 0;
     }
 
     // e) Проиндексировать зарплату всех сотрудников отдела на процент;

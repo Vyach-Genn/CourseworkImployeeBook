@@ -1,7 +1,7 @@
 import java.util.Objects;
 
 public class Employee {
-    // Лоля класса
+    // Поля класса
     private String name;
     private int department;
     private int salary;

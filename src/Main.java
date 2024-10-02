@@ -1,9 +1,12 @@
 import java.util.Random;
 
 public class Main {
+
+    private  static Employee[] employeesArr = new Employee[10];
+
     public static void main(String[] args) {
 
-        Employee[] employeesArr = new Employee[10];
+
         employeesArr[0] = new Employee("Fedorova Maria Ivanovna", 5, 57000);
         employeesArr[1] = new Employee("Sidorova Elena Viktorovna", 4, 59000);
         employeesArr[2] = new Employee("Petrova Anna Andreevna", 3, 61000);

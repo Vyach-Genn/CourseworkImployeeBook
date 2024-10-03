@@ -17,7 +17,7 @@ public class Employee {
         this.id = nextId++;
     }
 
-    public String getName() {
+    public String getfullName() {
         return fullName;
     }
 
@@ -56,6 +56,10 @@ public class Employee {
 
     @Override
     public String toString() {
-        return String.format("ID: %d, Name: %s,  salary: %d", id, fullName, monthSalary);
+        return String.format("ID: %d, ФИО: %s, ЗП: %d", id, fullName, monthSalary);
+    }
+
+    public String toStringTwo() {
+        return String.format("ID: %d, ФИО: %s, Отдел: %d,  ЗП: %d", id, fullName,department, monthSalary);
     }
 }

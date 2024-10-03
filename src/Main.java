@@ -2,16 +2,40 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        Employee[] employeesArr = new Employee[10];
-        EmployeeBook employeeBook = new EmployeeBook(employeesArr);
+        EmployeeBook employeeBook = new EmployeeBook();
         Random random = new Random();
 
+        // Task #1 методы из basicDifficulty
+        // a)  Получить список всех сотрудников со всеми имеющимися по ним данными
+        employeeBook.printListEmployee();
 
-        // Task #1  Проиндексировать зарплату (вызвать изменение зп у всех сотрудников на величину аргумента в %)
+        // b)  Посчитать сумму затрат на ЗП в месяц;
+        System.out.println("сумму затрат на ЗП в месяц: " + employeeBook.calculateSumSalary());
+        System.out.println();
+
+        // c) Найти сотрудника с минимальной ЗП;
+        employeeBook.findMinSalary();
+        System.out.println();
+
+        // d) Найти сотрудника с максимальной ЗП;
+        employeeBook.findMaxSalary();
+        System.out.println();
+
+        // e) Подсчитать среднее значение зарплат (можно использовать для этого метод из пункта b);
+        System.out.println("Cреднее значение зарплат: " + employeeBook.calculateAverageSalary());
+        System.out.println();
+
+        // f)  Распечатать ФИО всех сотрудников (метод ничего).
+        employeeBook.printName();
+        System.out.println();
+
+
+
+        // Task #2  Проиндексировать зарплату (вызвать изменение зп у всех сотрудников на величину аргумента в %)
         int present = 10;
         employeeBook.indexingTheSalary(present);
 
-        // Task #2 Получить в качестве параметра номер отдела (1-5) и найти (всего 6 методов):
+        // Task #3 Получить в качестве параметра номер отдела (1-5) и найти (всего 6 методов):
 
         // Получить в качестве параметра номер отдела (1-5)
         int departamentNumber = 1 + random.nextInt(5);
@@ -35,7 +59,7 @@ public class Main {
 //        System.out.println();
 
 //        // d) Среднюю зп по отделу
-        int averageDepartmentSalary = employeeBook.calculateAverageSalaryDepartment(departamentNumber);
+        float averageDepartmentSalary = employeeBook.calculateAverageSalaryDepartment(departamentNumber);
 //        System.out.println("№ департамента " + departamentIndex + ". Средняя сумма затрат на отдел: " + averageDepartmentSalary);
 //        System.out.println();
 
@@ -46,7 +70,7 @@ public class Main {
         employeeBook.printListEmployeeDepartment(departamentNumber);
         System.out.println();
 
-        // Task #3 Получить в качестве параметра число и вывести:
+        // Task #4 Получить в качестве параметра число и вывести:
 
         // a)  Всех сотрудников с зп меньше числа (распечатать id, фио и зп в консоль)
         employeeBook.printSalaryLessNumber(compareSalary);
@@ -56,11 +80,10 @@ public class Main {
         employeeBook.printSalaryGreaterNumber(compareSalary);
         System.out.println();
 
-        // Task #4
+        // Task #5
         // a) Добавить нового сотрудника. (метод должен найти свободную ячейку в массиве
         // и положить нового сотрудника в нее
-        Employee newEmployee = new Employee("Sysin Egor Petrovich", 2, 54000);
-        boolean IsNewEmployee = employeeBook.addNewEmployee(newEmployee);
+        employeeBook.addNewEmployee("Sysin Egor Petrovich", 2, 54000);
         System.out.println();
 
         // b) Удалить сотрудника (находим сотрудника по id, нуллим его ячейку в массиве);
@@ -69,7 +92,7 @@ public class Main {
         System.out.println();
 
 
-        // Task #5
+        // Task #6
         // a) Добавить метод для получения сотрудника по id
         int employeeId = 4;
         employeeBook.getEmployeeId(employeeId);

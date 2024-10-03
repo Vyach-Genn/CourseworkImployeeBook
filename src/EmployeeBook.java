@@ -1,10 +1,9 @@
 public class EmployeeBook {
 
-    private Employee[] employeesArr;
+    private static Employee[] employeesArr = new Employee[10];
 
-    public EmployeeBook(Employee[] employeesArr) {
-        this.employeesArr = employeesArr;
-        employeesArr[0] = new Employee("Fedorova Maria Ivanovna", 5, 57000);
+    static {
+        employeesArr[0] = new Employee("Fedorova Maria Ivanovna", 5, 63000);
         employeesArr[1] = new Employee("Sidorova Elena Viktorovna", 4, 59000);
         employeesArr[2] = new Employee("Petrova Anna Andreevna", 3, 61000);
         employeesArr[3] = new Employee("Ivanova Irina Ivanovna", 2, 65000);
@@ -16,8 +15,66 @@ public class EmployeeBook {
         employeesArr[9] = new Employee("Popov Pavel Sergeevich", 1, 69000);
     }
 
-    public Employee[] getEmployeesArr() {
+    public EmployeeBook() {
+    }
+
+    public static Employee[] getEmployeesArr() {
         return employeesArr;
+    }
+
+    // Task #0 методы из basicDifficulty
+    // a)  Получить список всех сотрудников со всеми имеющимися по ним данными
+    public void printListEmployee() {
+        for (Employee employee : employeesArr) {
+            System.out.println(employee.toStringTwo());
+        }
+        System.out.println();
+    }
+
+    // b)  Посчитать сумму затрат на ЗП в месяц;
+    public int calculateSumSalary() {
+        int sum = 0;
+        for (Employee employee : employeesArr)
+            sum += employee.getMonthSalary();
+        return sum;
+    }
+
+    // c) Найти сотрудника с минимальной ЗП;
+    public void findMinSalary() {
+        int min = employeesArr[0].getMonthSalary();
+        for (Employee employee : employeesArr) {
+            if (min > employee.getMonthSalary()) {
+                min = employee.getMonthSalary();
+
+            }
+            System.out.println("Cотрудник с минимальной ЗП: " + min);
+        }
+    }
+
+    // d) Найти сотрудника с максимальной ЗП;
+    public void findMaxSalary() {
+        int max = employeesArr[0].getMonthSalary();
+        for (Employee employee : employeesArr) {
+            if (max < employee.getMonthSalary()) {
+                max = employee.getMonthSalary();
+            }
+        }
+        System.out.println("Cотрудник с максимальной ЗП: " + max);
+    }
+
+    // e) Подсчитать среднее значение зарплат (можно использовать для этого метод из пункта b);
+    public float calculateAverageSalary() {
+        int sumAverage = calculateSumSalary();
+        return (float) sumAverage / employeesArr.length;
+
+    }
+
+    // f)  Распечатать ФИО всех сотрудников (метод ничего).
+    public void printName() {
+        for (Employee employee : employeesArr) {
+            System.out.printf("ФИО: %s \n", employee.getfullName());
+
+        }
     }
 
     // Task #1  Проиндексировать зарплату (вызвать изменение зп у всех сотрудников на величину аргумента в %)
@@ -64,7 +121,7 @@ public class EmployeeBook {
     }
 
     //  d) Средняя зп по отделу;
-    public int calculateAverageSalaryDepartment(int number) {
+    public float calculateAverageSalaryDepartment(int number) {
         int sumSalary = 0;
         int count = 0;
         for (Employee employee : employeesArr) {
@@ -100,30 +157,40 @@ public class EmployeeBook {
     // a)  Всех сотрудников с зп меньше числа (распечатать id, фио и зп в консоль);
     public void printSalaryLessNumber(int num) {
         System.out.printf("Сотрудники у которых зп меньше %d:\n", num);
+        int index = 0;
         for (Employee employee : employeesArr) {
             if (employee.getMonthSalary() < num) {
                 System.out.println(employee);
+                index++;
             }
+        }
+        if (index == 0) {
+            System.out.printf("Меньше числа %d сотрудников нет\n", num);
         }
     }
 
     // b)  Всех сотрудников с зп больше (или равно) числа (распечатать id, фио и зп в консоль).
     public void printSalaryGreaterNumber(int num) {
+        int index = 0;
         System.out.printf("Сотрудники у которых зп больше (или равно) %d:\n", num);
         for (Employee employee : employeesArr) {
             if (employee.getMonthSalary() >= num) {
                 System.out.println(employee);
+                index++;
             }
+        }
+        if (index == 0) {
+            System.out.printf("Больше или равно числу %d сотрудников нет\n", num);
         }
     }
 
     // Task #4
     // a) Добавить нового сотрудника. (метод должен найти свободную ячейку в массиве
     // и положить нового сотрудника в нее
-    public boolean addNewEmployee(Employee newEmployee) {
+    public boolean addNewEmployee(String fullName, int department, int monthSalary) {
         for (int i = 0; i < employeesArr.length; i++) {
             if (employeesArr[i] == null) {
-                employeesArr[i] = newEmployee;
+                employeesArr[i] = new Employee(fullName, department, monthSalary);
                 System.out.println("Сотрудник добавлен");
                 return true;
             }
@@ -158,5 +225,6 @@ public class EmployeeBook {
         System.out.printf("Сутрудник с ID %d был не найден.", employeeId);
         return false;
     }
+
 
 }

@@ -87,10 +87,9 @@ public class Main {
         System.out.println();
 
         // b) Удалить сотрудника (находим сотрудника по id, нуллим его ячейку в массиве);
-        int numberId = 5;
+        int numberId = 3;
         employeeBook.removeEmployee(numberId);
         System.out.println();
-
 
         // Task #6
         // a) Добавить метод для получения сотрудника по id
